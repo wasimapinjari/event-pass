@@ -1,12 +1,16 @@
 # Event Pass
 
+## Demo link: [eventpass.netlify.app](https://eventpass.netlify.app)
+
 ## Screenshot
 
 ![Event pass](public/screenshot.png)
 
-## Getting Started with Create React App
+## Project Demo (Video)
 
-![Event pass project demo](public\event-pass-project.mp4)
+[public/event-pass-project.mp4](public/event-pass-project.mp4)
+
+## Getting started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
