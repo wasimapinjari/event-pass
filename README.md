@@ -6,6 +6,7 @@
 
 ## Getting Started with Create React App
 
+![Event pass project demo](public\event-pass-project.mp4)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
