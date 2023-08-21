@@ -1,10 +1,13 @@
+import { useEventPass } from "../contexts/EventPassContext";
 import Visitor from "./Visitor";
 
-export default function EventVisitors({ onEdit, onDelete, currentEvent }) {
+export default function EventVisitors() {
+  // console.log(useEventPass());
+  const { state } = useEventPass();
   return (
     <section className="main-content">
-      {currentEvent?.visitors.map((visitor) => (
-        <Visitor key={visitor.visitorId} visitor={visitor} onEdit={onEdit} onDelete={onDelete} />
+      {state.currentEvent?.visitors.map((visitor) => (
+        <Visitor key={visitor.visitorId} visitor={visitor} />
       ))}
     </section>
   );

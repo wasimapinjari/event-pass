@@ -1,64 +1,37 @@
 import Button from "./Button";
+import { useEventPass } from "../contexts/EventPassContext";
 
-export default function EventVisitorForm({
-  onAddVisitor,
-  newVisitorData,
-  onSetNewVisitorData,
-  currentEvent,
-}) {
+export default function EventVisitorForm() {
+  const { state, dispatch } = useEventPass();
   function handleSubmit(e) {
     e.preventDefault();
-    if (!newVisitorData.name) return;
-    onAddVisitor();
+    if (!state.newVisitorData.name) return;
+    dispatch({ type: "visitorAdd" });
   }
   const disableChecker =
-    !newVisitorData?.visitorId &&
-    currentEvent?.eventCapacity === currentEvent?.visitors.length;
+    !state.newVisitorData?.visitorId &&
+    state.currentEvent?.eventCapacity === state.currentEvent?.visitors.length;
 
   return (
     <form className="main__form" onSubmit={handleSubmit}>
       <div>
         <label>Name</label>
-        {disableChecker ? (
-          <input
-            type="text"
-            disabled
-            value={newVisitorData.name}
-            onChange={(e) => {
-              const value = e.target.value;
-              onSetNewVisitorData((p) => {
-                return {
-                  ...p,
-                  name: value.length < 50 ? value : newVisitorData.name,
-                };
-              });
-            }}
-          />
-        ) : (
-          <input
-            type="text"
-            value={newVisitorData.name}
-            onChange={(e) => {
-              const value = e.target.value;
-              onSetNewVisitorData((p) => {
-                return {
-                  ...p,
-                  name: value.length < 50 ? value : newVisitorData.name,
-                };
-              });
-            }}
-          />
-        )}
+        <input
+          type="text"
+          placeholder="John Doe"
+          disabled={disableChecker}
+          value={state.newVisitorData.name}
+          onChange={(e) => {
+            dispatch({ type: "visitorSetText", payload: e.target.value });
+          }}
+        />
       </div>
       <div>
         <label>Type</label>
         <select
-          value={newVisitorData.type}
+          value={state.newVisitorData.type}
           onChange={(e) => {
-            const value = e.target.value;
-            onSetNewVisitorData((p) => {
-              return { ...p, type: value };
-            });
+            dispatch({ type: "visitorSetType", payload: e.target.value });
           }}
         >
           <option>Attendee</option>
@@ -69,12 +42,9 @@ export default function EventVisitorForm({
       <div>
         <label>Gender</label>
         <select
-          value={newVisitorData.gender}
+          value={state.newVisitorData.gender}
           onChange={(e) => {
-            const value = e.target.value;
-            onSetNewVisitorData((p) => {
-              return { ...p, gender: value };
-            });
+            dispatch({ type: "visitorSetGender", payload: e.target.value });
           }}
         >
           <option>Male</option>
@@ -82,7 +52,7 @@ export default function EventVisitorForm({
         </select>
       </div>
       <div>
-      <Button>{newVisitorData.visitorId ? "Change" : "Add"}</Button>
+        <Button>{state.newVisitorData.visitorId ? "Change" : "Add"}</Button>
       </div>
     </form>
   );

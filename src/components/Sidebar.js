@@ -1,6 +1,6 @@
 import SidebarEventForm from "./SidebarEventForm";
 
-export default function Sidebar({eventData, onCreate, currentEvent, onSetCurrentEvent}) {
+export default function Sidebar() {
   return (
     <aside className="sidebar">
       <center>
@@ -9,7 +9,7 @@ export default function Sidebar({eventData, onCreate, currentEvent, onSetCurrent
           <br />
           PASS
         </h1>
-        <SidebarEventForm eventData={eventData} onCreate={onCreate} currentEvent={currentEvent} onSetCurrentEvent={onSetCurrentEvent} />
+        <SidebarEventForm />
       </center>
     </aside>
   );
