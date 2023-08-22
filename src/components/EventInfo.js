@@ -3,7 +3,6 @@ import Button from "./Button";
 
 export default function EventInfo() {
   const { state, dispatch } = useEventPass();
-  // console.log(currentEvent);
   return (
     <section className="event-info">
       {state.currentEvent ? (

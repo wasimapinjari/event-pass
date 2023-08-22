@@ -2,7 +2,6 @@ import { useEventPass } from "../contexts/EventPassContext";
 import Visitor from "./Visitor";
 
 export default function EventVisitors() {
-  // console.log(useEventPass());
   const { state } = useEventPass();
   return (
     <section className="main-content">

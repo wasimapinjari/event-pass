@@ -31,7 +31,6 @@ export default function SidebarEventForm() {
     dispatch({ type: "eventNameValidate", payload: e.target.value });
   }
 
-  // console.log(currentEvent);
   return (
     <section>
       <form className="sidebar__form" onSubmit={handleSubmit}>

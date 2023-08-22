@@ -89,7 +89,6 @@ function EventPassProvider({ children }) {
         };
 
       case "eventCreate":
-        console.log(state);
         return {
           ...state,
           eventData: [...state.eventData, { ...action.payload, visitors: [] }],
@@ -235,7 +234,6 @@ function EventPassProvider({ children }) {
   const eventArrayLength = useRef(state.eventData.length);
 
   useEffect(() => {
-    localStorage.setItem("state", JSON.stringify(state));
     if (eventArrayLength.current !== state.eventData.length) {
       eventArrayLength.current = state.eventData.length;
       if (state.eventData.length === 0) {
@@ -245,9 +243,12 @@ function EventPassProvider({ children }) {
         type: "eventSwitchToLast",
       });
     }
-    console.log("third");
     dispatch({ type: "eventDataRefresh" });
   }, [state.eventData]);
+
+  useEffect(() => {
+    localStorage.setItem("state", JSON.stringify(state));
+  }, [state]);
 
   return (
     <EventPassContext.Provider
