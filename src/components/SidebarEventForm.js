@@ -23,14 +23,6 @@ export default function SidebarEventForm() {
     dispatch({ type: "eventReset" });
   }
 
-  function handleEventCapacity(e) {
-    dispatch({ type: "eventCapacityValidate", payload: e.target.value });
-  }
-
-  function handleEventName(e) {
-    dispatch({ type: "eventNameValidate", payload: e.target.value });
-  }
-
   return (
     <section>
       <form className="sidebar__form" onSubmit={handleSubmit}>
@@ -57,7 +49,9 @@ export default function SidebarEventForm() {
             placeholder={`KubeCon ${new Date().getFullYear()}`}
             type="text"
             value={state.newEventData.eventName}
-            onChange={handleEventName}
+            onChange={(e) =>
+              dispatch({ type: "eventNameValidate", payload: e.target.value })
+            }
           />
         </div>
         <div>
@@ -66,7 +60,12 @@ export default function SidebarEventForm() {
             type="text"
             placeholder="100"
             value={state.newEventData.eventCapacity}
-            onChange={handleEventCapacity}
+            onChange={(e) =>
+              dispatch({
+                type: "eventCapacityValidate",
+                payload: e.target.value,
+              })
+            }
           />
         </div>
         <div>
