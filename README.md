@@ -10,6 +10,12 @@
 
 [public/event-pass-project.mp4](public/event-pass-project.mp4)
 
+
+## Features
+
+- Build a responsive React app that allows users to create events and track people who are attending them.
+- Manage the whole state of the app using Context API & useReducer() hook.
+
 ## Getting started
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
