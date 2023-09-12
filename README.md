@@ -1,6 +1,6 @@
 # Event Pass
 
-## Demo link: [eventpass.netlify.app](https://eventpass.netlify.app)
+## Demo link: [ep-project.netlify.app](https://ep-project.netlify.app)
 
 ## Screenshot
 
